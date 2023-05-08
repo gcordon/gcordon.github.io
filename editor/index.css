@@ -1,0 +1,17 @@
+#id-editor {
+    border: 1px solid #333;
+    width: 300px;
+    height: 300px;
+}
+.const {
+    color: purple;
+}
+.var {
+    color: cadetblue;
+}
+.equal {
+    color: green;
+}
+.number {
+    color: red;
+}
