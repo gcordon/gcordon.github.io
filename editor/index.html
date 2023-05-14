@@ -10,6 +10,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 
     <style>
+        .offcanvas, .offcanvas-lg, .offcanvas-md, .offcanvas-sm, .offcanvas-xl, .offcanvas-xxl {
+            --bs-offcanvas-width: 50vw;
+        }
         * {
             margin: 0;
             padding: 0;
@@ -22,40 +25,60 @@
             z-index: 2;
         }
         #id-textarea {
-            position: absolute;
-            z-index: 1;
-            opacity: 0;
-            left: 0;
-            top: 0;
-            font-size: 32px;
-            width: 1400px;
-            height: 600px;
+            /*position: absolute;*/
+            /*z-index: 1;*/
+            /*opacity: 0;*/
+            /*left: 0;*/
+            /*top: 0;*/
+            /*font-size: 32px;*/
+            /*width: 1400px;*/
+            /*height: 600px;*/
+        }
+        input[type="range"][orient="vertical"] {
+            writing-mode: bt-lr;
+            appearance: slider-vertical;
         }
     </style>
 </head>
-<body class="p-3 m-0 border-0 bd-example">
-    <canvas id="id-canvas" width="700" height="300">
+<body>
+    <canvas id="id-canvas" width="400" height="200">
     </canvas>
     <textarea name=""  id="id-textarea">
     </textarea>
+<!--    <lin-introduce></lin-introduce>-->
     <div>
         配置：
-        宽<input type="range" name="" value="30" data-input="actionConfig" data-name="headerWidth" />
-        高<input type="range" name="" value="20"  data-input="actionConfig" data-name="height" />
-        字<input type="range" name=""  value="20" data-input="actionConfig" data-name="fontSize" />
+        <div hidden>
+            budeg开关
+            <input type="checkbox" id="id-debug"  data-input="actionDebugModel">
+            定时器速度<input type="range" name="" min="-100" value="30" data-input="actionConfig" data-name="loopTime" />
+        scrollTop<input type="range" orient="vertical"  min="-300" value="0" data-input="actionConfig" data-name="scrollTop" />
+
+        </div>
+        主题:<button type="range" data-click="actionMenu" data-value='dark'>dark</button>
+        主题:<button type="range" data-click="actionMenu" data-value='light'>light</button>
+        代码头宽<input type="range" name="" value="30" data-input="actionConfig" data-name="headerWidth" />
+        代码整体高<input type="range" name="" value="20"  data-input="actionConfig" data-name="height" />
+        代码整体字大小<input type="range" name=""  value="20" data-input="actionConfig" data-name="fontSize" />
         <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
             当前编辑器已实现功能表
         </button>
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
             <div class="offcanvas-header">
                 <h5 class="offcanvas-title" id="offcanvasRightLabel">
-                    功能清单:
+                    功能:
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
                 <div class="container">
+                    <h3 class="text-center mb-5">功能清单</h3>
                     <ul class="list-group">
+                        <li class="list-group-item list-group-item-primary">技术栈：
+                                原生Javascript、Canvas、
+<!--                                <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Web_components" class="btn btn-link" role="button" aria-pressed="true">Web Component </a>-->
+                        </li>
+
                         <li class="list-group-item list-group-item-primary">高亮：
                             var function if else true {}[] 回车 空格 </li>
                         <li class="list-group-item list-group-item-warning">
@@ -75,20 +98,19 @@
                         </li>
                         <li class="list-group-item list-group-item-primary">拖拽代码选中(有小bug ~ - ~.)</li>
                     </ul>
-
-                    <div class="row g-0 bg-body-white flex justify-content-center position-relative mb-md-0 p-md-2 fs-4">
-                        @copy LinZR
-                    </div>
                 </div>
             </div>
         </div>
+
     </div>
     <script src="utils.js"></script>
     <script src="EventClicks.js"></script>
+    <script src="laxer.js"></script>
+    <script src="config.js"></script>
+    <script src="mouseCode.js"></script>
     <script src="main.js"></script>
     <script src="bindEvent.js"></script>
     <script src="demo.js"></script>
-    <script src="laxer.js"></script>
     <script src="codeParse.js"></script>
     <script src="deepClone.js"></script>
 
@@ -97,5 +119,7 @@
 
     <script src="test.js"></script>
     <script src="demo.js"></script>
+
+    <script src="introduce.js" type="module"></script>
 </body>
 </html>
