@@ -1,0 +1,73 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Paint</title>
+    <style>
+        body { 
+            background-color: ivory; 
+        }
+        #id-main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            touch-action: none;
+            margin: 20px;
+        }
+        canvas {
+            border: black 1px solid;
+            box-shadow: 2px 2px 10px #ecebeb, -2px -2px 10px #ecebeb, -2px 2px 10px #ecebeb, 2px -2px 10px #ecebeb;
+        }
+    </style>
+</head>
+<body>
+    <div id="id-main">
+        <canvas id="id-canvas" width="600" height="400"></canvas>
+        <div id="id-position"></div>
+        <color-select></color-select>
+        <footer>@copy LinZR</footer>
+    </div>
+    <!-- 
+        1 有一个画板
+        2 画一个小点
+        3 鼠标 按下到抬起 的路线 画 小点
+     -->
+     <script src="utils.js"></script>
+     <script src="guagame.js"></script>
+     <script src="gua-events.js"></script>
+     <script src="gua-base.js"></script>
+     <script src="gua-rect.js"></script>
+     <script src="gua-absorb.js"></script>
+     <script src="gua-pen.js"></script>
+     <script src="gua-clear.js"></script>
+     <script src="tool.js"></script>
+     <script>
+        const enlabelDebugModel = (enlable) => {
+            if (!enlable) {
+                return
+            }
+
+            let game = gua()
+
+            game.drawBackground()
+            game.drawRect()
+
+            // 双击清除
+            game.addCanvasEvents('dblclick',(self, event)=>{
+                log(self, event)
+                self.clearCanvas()
+            })
+        }
+
+        const __main = () => {
+            enlabelDebugModel(true)
+
+            Tool.watchEvents(Tool.rect)
+            Tool.watchKeydown()
+        }
+        __main()
+        
+     </script>
+     <script src="colorselect.js"></script>
+</body>
+</html>
